@@ -1,0 +1,27 @@
+public class Main {
+	
+	public static void main(String[] args){		
+		ExecutorService fixedThreadPool = Executors.newFixedThreadPool(10);
+		for(int i=0;i<10;i++)
+		  fixedThreadPool.submit(new Task());
+	}	
+}
+class Task implements Runnable{
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		test();
+		System.out.println(Thread.currentThread().getName()+" finished");
+	}
+	private void test(){
+		byte[] b=new byte[1024*1024*4];
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}
